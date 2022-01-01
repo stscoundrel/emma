@@ -16,7 +16,7 @@ LocalStorage values can live for a long time. If you save somethig in there, it 
 
 ### What's in the name?
 
-Emma is a feminine give name in multiple languages and countries. How it came to represet storage in this libray is a verse from an urban poet in Kannelmäki, Finland:
+Emma is a feminine given name in multiple languages and countries. How it came to represet storage in this libray is a verse from an urban poet in Kannelmäki, Finland:
 
 "Mummolassa jemma ja mummon nimi Emma"
 
