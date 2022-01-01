@@ -25,9 +25,12 @@ describe('Emma test suite', () => {
     emma.setItem('MyItemEmmaItem', 666);
 
     const result = localStorage.getItem(`${STORAGE_KEY}MyItemEmmaItem`);
-    const expected = '{"value":666,"expiration":1643756461001}';
+    const resultObject = JSON.parse(result);
 
-    expect(result).toBe(expected);
+    expect(resultObject.value).toBe(666);
+
+    // Expiration date should be in the future
+    expect(resultObject.expiration > Date.now()).toBeTruthy();
   });
 
   test('Removes items based on key', () => {
