@@ -7,6 +7,10 @@ module.exports = {
     'jest',
     '@typescript-eslint',
   ],
+  globals: {
+    window: true,
+    localStorage: true,
+  },
   env: {
     node: true,
     es6: true,
