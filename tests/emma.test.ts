@@ -21,20 +21,6 @@ describe('Emma test suite', () => {
     expect(result).toBeFalsy();
   });
 
-  test('Stores & fetches values with custom TTL', () => {
-    const ttl = 123456789;
-    emma.setItem('MyItem1', 666, ttl);
-    emma.setItem('MyItem2', 666);
-
-    const result1 = localStorage.getItem(`${STORAGE_KEY}MyItem1`); // Custom ttl
-    const result2 = localStorage.getItem(`${STORAGE_KEY}MyItem2`); // Default for comparison.
-
-    const expectedExpiration = '1643793517790'; // mock date + ttl
-
-    expect(result1.includes(expectedExpiration)).toBeTruthy();
-    expect(result2.includes(expectedExpiration)).toBeFalsy();
-  });
-
   test('Stores values with prefixed keys & expiration time', () => {
     emma.setItem('MyItemEmmaItem', 666);
 
