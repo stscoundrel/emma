@@ -67,7 +67,7 @@ Nothing fancy. Instead of storing just the value in localStorage, Emma stores it
 
 ### What's in the name?
 
-Emma is a feminine given name in multiple languages and countries. How it came to represent storage in this libray is a verse from an urban poet in Kannelmäki, Finland, where he rhymes his "stash" with her grandmothers name, Emma.
+Emma is a feminine given name in multiple languages and countries. How it came to represent storage in this libray is a verse from an urban poet in Kannelmäki, Finland, where he rhymes his "stash" with his grandmothers name, Emma.
 
 _"Mummolassa jemma ja mummon nimi Emma"_
 
