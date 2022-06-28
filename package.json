@@ -1,6 +1,6 @@
 {
   "name": "emma-storage",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Simple localStorage with expiration times.",
   "repository": "https://github.com/stscoundrel/emma.git",
   "author": "stscoundrel <silvennoinen.sampo@gmail.com>",
