@@ -1,4 +1,5 @@
-import emma, { STORAGE_KEY } from '../src';
+import { local as emma } from '../src';
+import { STORAGE_KEY } from '../src/setup';
 
 describe('Emma test suite', () => {
   beforeEach(() => {

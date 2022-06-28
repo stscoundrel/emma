@@ -1,0 +1,81 @@
+import { session as emma } from '../src';
+import { STORAGE_KEY } from '../src/setup';
+
+describe('Emma test suite', () => {
+  beforeEach(() => {
+    sessionStorage.clear();
+  });
+
+  test('Stores & fetches values in sessionStorage', () => {
+    emma.setItem('MyItem', 666);
+    const result = emma.getItem('MyItem');
+
+    expect(result).toBe(666);
+  });
+
+  test('Does not return expired values', () => {
+    const ttl = -123456; // Negative ttl brings date to the past.
+    emma.setItem('MyItem1', 666, ttl);
+
+    const result = emma.getItem('MyItem1');
+
+    expect(result).toBeFalsy();
+  });
+
+  test('Stores values with prefixed keys & expiration time', () => {
+    emma.setItem('MyItemEmmaItem', 666);
+
+    const result = sessionStorage.getItem(`${STORAGE_KEY}MyItemEmmaItem`);
+    const resultObject = JSON.parse(result);
+
+    expect(resultObject.value).toBe(666);
+
+    // Expiration date should be in the future
+    expect(resultObject.expiration > Date.now()).toBeTruthy();
+  });
+
+  test('Removes items based on key', () => {
+    const key1 = 'MyItemEmmaItem1';
+    const key2 = 'MyItemEmmaItem2';
+    const key3 = 'MyItemEmmaItem3';
+
+    emma.setItem(key1, 666);
+    emma.setItem(key2, 667);
+    emma.setItem(key3, 668);
+
+    emma.removeItem(key1);
+    emma.removeItem(key3);
+
+    const result1 = emma.getItem(key1);
+    const result2 = emma.getItem(key2);
+    const result3 = emma.getItem(key3);
+
+    expect(result1).toBeFalsy();
+    expect(result2).toBe(667);
+    expect(result3).toBeFalsy();
+  });
+
+  test('Clears storage, but only removes Emma-items', () => {
+    const key1 = 'MyEmmaItem1';
+    const key2 = 'MyEmmaItem2';
+    const key3 = 'MyEmmaItem3';
+
+    emma.setItem(key1, 666);
+    emma.setItem(key2, 667);
+    emma.setItem(key3, 668);
+
+    sessionStorage.setItem('NormalItem', 'normal value');
+
+    emma.clear();
+
+    const result1 = emma.getItem(key1);
+    const result2 = emma.getItem(key2);
+    const result3 = emma.getItem(key3);
+    const result4 = sessionStorage.getItem('NormalItem');
+
+    expect(result1).toBeFalsy();
+    expect(result2).toBeFalsy();
+    expect(result3).toBeFalsy();
+    expect(result4).toBe('normal value');
+  });
+});
