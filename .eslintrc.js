@@ -10,6 +10,7 @@ module.exports = {
   globals: {
     window: true,
     localStorage: true,
+    sessionStorage: true,
   },
   env: {
     node: true,
