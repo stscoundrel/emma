@@ -88,7 +88,7 @@ Nothing fancy. Instead of storing just the value in Storage, Emma stores it with
 }
 ```
 
-When Emma is fetching the value again, the library will evaluate this best-before date against current time, possiblt removing the vlaue if it is expired.
+When Emma is fetching the value again, the library will evaluate this best-before date against current time, possibly removing the value if it is expired.
 
 ##### Caveats
 
