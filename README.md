@@ -63,7 +63,7 @@ const myObject = {
 /**
  * Store a value.
  * Emma prefixes the keys under-the-hood
- * to avoid collisions with regular localStorage. 
+ * to avoid collisions with regular sessionStorage. 
  */
 emma.setItem('myKey', myObject);
 
